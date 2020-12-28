@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Caller/static/css/main.69eda509.chunk.css",
+    "main.js": "/Caller/static/js/main.bfba14fd.chunk.js",
+    "main.js.map": "/Caller/static/js/main.bfba14fd.chunk.js.map",
+    "runtime-main.js": "/Caller/static/js/runtime-main.0a8bbdf2.js",
+    "runtime-main.js.map": "/Caller/static/js/runtime-main.0a8bbdf2.js.map",
+    "static/js/2.aaa65b5a.chunk.js": "/Caller/static/js/2.aaa65b5a.chunk.js",
+    "static/js/2.aaa65b5a.chunk.js.map": "/Caller/static/js/2.aaa65b5a.chunk.js.map",
+    "index.html": "/Caller/index.html",
+    "precache-manifest.8af4f0781422d267533f89486766a14f.js": "/Caller/precache-manifest.8af4f0781422d267533f89486766a14f.js",
+    "service-worker.js": "/Caller/service-worker.js",
+    "static/css/main.69eda509.chunk.css.map": "/Caller/static/css/main.69eda509.chunk.css.map",
+    "static/js/2.aaa65b5a.chunk.js.LICENSE.txt": "/Caller/static/js/2.aaa65b5a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0a8bbdf2.js",
+    "static/js/2.aaa65b5a.chunk.js",
+    "static/css/main.69eda509.chunk.css",
+    "static/js/main.bfba14fd.chunk.js"
+  ]
+}
