@@ -7,7 +7,7 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={CreateRoom} />
+        <Route path="/Caller" exact component={CreateRoom} />
         <Route path="/room/:roomID" component={Room} />
       </Switch>
     </BrowserRouter>
