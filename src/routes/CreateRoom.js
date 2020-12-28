@@ -16,6 +16,9 @@ const CreateRoom = (props) => {
     function handleClick(){
         props.history.push(`/room/${code}`);
     }
+    function handleRoom(){
+        create();
+    }
     return (
         <>
             <BhaluBar/>
@@ -40,7 +43,7 @@ const CreateRoom = (props) => {
                                 variant="contained"
                                 color="primary"
                                 endIcon={<VideoCallIcon/>}
-                                // size="large"
+                                onClick={handleRoom}
                                 fullWidth
                             >
                                 Meeting
