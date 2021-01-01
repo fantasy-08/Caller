@@ -2,8 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import Peer from "simple-peer";
 import styled from "styled-components";
+import {Grid,Container,TextField,Typography,Paper,Button} from '@material-ui/core';
+import BhaluBar from '../Components/Navbar';
+import IconButton from '@material-ui/core/IconButton';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import MicOffIcon from '@material-ui/icons/MicOff';
+import MicIcon from '@material-ui/icons/Mic';
+import { Player, ControlBar, VolumeMenuButton } from 'video-react';
+const Containerr = styled.div`
 
-const Container = styled.div`
     padding: 20px;
     display: flex;
     height: 100vh;
@@ -13,8 +20,9 @@ const Container = styled.div`
 `;
 
 const StyledVideo = styled.video`
-    height: 40%;
-    width: 50%;
+    height: 110%;
+    width: 80%;
+    
 `;
 
 const Video = (props) => {
@@ -110,14 +118,46 @@ const Room = (props) => {
     }
 
     return (
+        <>
+        <BhaluBar/>
         <Container>
-            <StyledVideo muted ref={userVideo} autoPlay playsInline />
+        <Grid container justify="center" alignItems="center" spacing={0} style={{ minHeight: '105vh' }}>
+        <Grid  item sm={12} md={9}>
+ 
+            <StyledVideo  style={{ borderRadius:'.5rem'}} muted ref={userVideo} autoPlay playsInline >
+            
+            </StyledVideo>
+
+            <IconButton>
+                <PhotoCamera/>
+            </IconButton>
+            <IconButton>
+                <MicIcon/>
+            </IconButton>
+            <IconButton>
+                <MicOffIcon/>
+            </IconButton>
+
             {peers.map((peer, index) => {
                 return (
                     <Video key={index} peer={peer} />
                 );
             })}
+            </Grid>
+            <Grid item sm={12} md={3}>
+            <Grid item sm={12} style={{ justify:"center" ,alignItems:"center"}}>
+                           <Typography variant="subtitle1" style={{ justify:"center" ,alignItems:"center"}}>
+                               <span style={{ justify:"center" ,textAlign:"center"}}>Ready to Join<br/><br/></span>
+                            </Typography> 
+                        </Grid>
+            <Grid item sm={12}  >
+            <Button style={{backgroundColor:"Gray", borderRadius:"5rem"}}> Join Now </Button>
+            <Button style={{backgroundColor:"Gray", borderRadius:"5rem"}}> Present </Button>
+            </Grid>
+            </Grid>
+        </Grid>
         </Container>
+        </>
     );
 };
 
