@@ -8,7 +8,7 @@ import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined';
 import ChatOutlinedIcon from '@material-ui/icons/ChatOutlined';
 import Chatbox from "./Chatbox";
 export default function Navbar() {
-
+ 
   return (
     <div >
        <AppBar color="transparent" style={{height:'50px', weidth:'50px'}} position="static">
@@ -18,7 +18,7 @@ export default function Navbar() {
                 <Grid item sm={6}   gridItemAlign ="center" spacing={0}>
                      <div style={{paddingLeft:"1.2rem"}}>
                     <Button><PeopleAltOutlinedIcon style={{color:"Black"}}/> </Button>
-                     <Chatbox/>
+                     <Chatbox style={{bottom:"5px"}} />
                     </div>
                 </Grid>
 

@@ -14,10 +14,11 @@ import CallEndIcon from '@material-ui/icons/CallEnd';
 import ClosedCaptionOutlinedIcon from '@material-ui/icons/ClosedCaptionOutlined';
 import PresentToAllSharpIcon from '@material-ui/icons/PresentToAllSharp';
 import Menu from "./Menu";
+import Chatbox from "./Chatbox";
  const Footer =()=>{
   return (
     
-    <BottomNavigation  style={{ position:"absolute",left:"0",bottom:"0",right:"0", width:"100%"}}>
+    <BottomNavigation  style={{ position:"fixed",left:"0",bottom:"0",right:"0", width:"100%"}}>
       <Container>
       <Grid container justify="center" alignItems="center" spacing={0} >
                 <Grid item sm={4} md={4}  alignItems="left" spacing={0}>
@@ -32,12 +33,13 @@ import Menu from "./Menu";
                 </Grid>
                 <Grid item sm={3} md={3} justify="Right"  alignItems="Right" spacing={0}>
                     <Button > <ClosedCaptionOutlinedIcon style={{height: "30px", width: "60px"}} />  </Button>
-                    <Button > <PresentToAllSharpIcon style={{height: "30px", width: "60px"}}/> </Button>         
+                    <Button > <PresentToAllSharpIcon style={{height: "30px", width: "60px"}}/> </Button>  
+                    <Chatbox/>       
                 </Grid>
     </Grid> 
     </Container>
     </BottomNavigation>
-   
+    
   );
 };
 

@@ -12,20 +12,28 @@ import { Player, ControlBar, VolumeMenuButton } from 'video-react';
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Smallnavbar";
 import 'react-chat-widget/lib/styles.css';
+
+const footercss = styled.div`
+
+marginTop :0px;
+    position:Sticky;
+    bottom:0;
+    zIndex:999;
+
+`;
+
 const Containerr = styled.div`
 
-    padding: 20px;
-    display: flex;
-    height: 100vh;
-    width: 90%;
-    margin: auto;
-    flex-wrap: wrap;
+    marginTop :0px;
+    position:Sticky;
+    top:0;
+    zIndex:999; 
 `;
 
 const StyledVideo = styled.video`
-    height: 110%;
-    width: 80%;
-    
+    height: 350px;
+    width: 400px;
+    margin: 10px;
 `;
 
 const Video = (props) => {
@@ -123,36 +131,34 @@ const Room = (props) => {
     return (
         <>
           <Grid container  spacing={1} >
-                  <Grid item sm={12} md={9} container spacing={0} alignItems="center" justify="center" alignItems="center" >
-                  <StyledVideo  style={{ borderRadius:'.5rem'}} muted ref={userVideo} autoPlay playsInline >
-            
-            </StyledVideo>
-
-            <IconButton>
-                <PhotoCamera/>
-            </IconButton>
-            <IconButton>
-                <MicIcon/>
-            </IconButton>
-            <IconButton>
-                <MicOffIcon/>
-            </IconButton>
-
-            {peers.map((peer, index) => {
-                return (
-                    <Video key={index} peer={peer} />
-                );
-            })}
+                  <Grid item sm={12} md={9} container spacing={3} alignItems="center" justify="center" alignItems="center" >
+                            <StyledVideo  style={{ borderRadius:'.5rem'}} muted ref={userVideo} autoPlay playsInline />
+                                {peers.map((peer, index) => {
+                                    return (
+                                        <Video key={index} peer={peer} />
+                                    );
+                                })}
                   </Grid>
-  
+    
                   <Grid item sm={12} md={3}  alignItems="right" float ="right" spacing={0}>
-                       <Navbar style={{marginTop :"0px"}}/>
+                       <Containerr><Navbar /></Containerr>
                   </Grid>
                   
           </Grid>
-        <Footer/> 
+         <footercss> <Footer/>  </footercss>
         </>
       );
     }
     export default Room;
+
+     {/* 
+                        <IconButton>
+                            <PhotoCamera/>
+                        </IconButton>
+                        <IconButton>
+                            <MicIcon/>
+                        </IconButton>
+                        <IconButton>
+                            <MicOffIcon/>
+                        </IconButton> */}
   

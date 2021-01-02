@@ -11,7 +11,7 @@ import 'react-chat-widget/lib/styles.css';
   }
   const Chatbox=()=> {
     useEffect(() => {
-        addResponseMessage('Welcome to this chat!');
+        //addResponseMessage('Welcome to this chat!');
       }, []);
     return (
         <>
