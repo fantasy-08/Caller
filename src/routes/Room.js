@@ -9,6 +9,9 @@ import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import MicOffIcon from '@material-ui/icons/MicOff';
 import MicIcon from '@material-ui/icons/Mic';
 import { Player, ControlBar, VolumeMenuButton } from 'video-react';
+import Footer from "../Components/Footer";
+import Navbar from "../Components/Smallnavbar";
+import 'react-chat-widget/lib/styles.css';
 const Containerr = styled.div`
 
     padding: 20px;
@@ -119,12 +122,9 @@ const Room = (props) => {
 
     return (
         <>
-        <BhaluBar/>
-        <Container>
-        <Grid container justify="center" alignItems="center" spacing={0} style={{ minHeight: '105vh' }}>
-        <Grid  item sm={12} md={9}>
- 
-            <StyledVideo  style={{ borderRadius:'.5rem'}} muted ref={userVideo} autoPlay playsInline >
+          <Grid container  spacing={1} >
+                  <Grid item sm={12} md={9} container spacing={0} alignItems="center" justify="center" alignItems="center" >
+                  <StyledVideo  style={{ borderRadius:'.5rem'}} muted ref={userVideo} autoPlay playsInline >
             
             </StyledVideo>
 
@@ -143,22 +143,16 @@ const Room = (props) => {
                     <Video key={index} peer={peer} />
                 );
             })}
-            </Grid>
-            <Grid item sm={12} md={3}>
-            <Grid item sm={12} style={{ justify:"center" ,alignItems:"center"}}>
-                           <Typography variant="subtitle1" style={{ justify:"center" ,alignItems:"center"}}>
-                               <span style={{ justify:"center" ,textAlign:"center"}}>Ready to Join<br/><br/></span>
-                            </Typography> 
-                        </Grid>
-            <Grid item sm={12}  >
-            <Button style={{backgroundColor:"Gray", borderRadius:"5rem"}}> Join Now </Button>
-            <Button style={{backgroundColor:"Gray", borderRadius:"5rem"}}> Present </Button>
-            </Grid>
-            </Grid>
-        </Grid>
-        </Container>
+                  </Grid>
+  
+                  <Grid item sm={12} md={3}  alignItems="right" float ="right" spacing={0}>
+                       <Navbar style={{marginTop :"0px"}}/>
+                  </Grid>
+                  
+          </Grid>
+        <Footer/> 
         </>
-    );
-};
-
-export default Room;
+      );
+    }
+    export default Room;
+  

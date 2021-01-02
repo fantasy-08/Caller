@@ -6,8 +6,8 @@ import * as serviceWorker from './serviceWorker';
 import Videocall from "./routes/Videocall";
 ReactDOM.render(
   <React.StrictMode>
-  <Videocall/>
-    {/* <App /> */}
+  {/* <Videocall/> */}
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

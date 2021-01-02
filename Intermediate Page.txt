@@ -1,0 +1,38 @@
+<BhaluBar/>
+        <Container>
+        <Grid container justify="center" alignItems="center" spacing={0} style={{ minHeight: '105vh' }}>
+        <Grid  item sm={12} md={9}>
+ 
+            <StyledVideo  style={{ borderRadius:'.5rem'}} muted ref={userVideo} autoPlay playsInline >
+            
+            </StyledVideo>
+
+            <IconButton>
+                <PhotoCamera/>
+            </IconButton>
+            <IconButton>
+                <MicIcon/>
+            </IconButton>
+            <IconButton>
+                <MicOffIcon/>
+            </IconButton>
+
+            {peers.map((peer, index) => {
+                return (
+                    <Video key={index} peer={peer} />
+                );
+            })}
+            </Grid>
+            <Grid item sm={12} md={3}>
+            <Grid item sm={12} style={{ justify:"center" ,alignItems:"center"}}>
+                           <Typography variant="subtitle1" style={{ justify:"center" ,alignItems:"center"}}>
+                               <span style={{ justify:"center" ,textAlign:"center"}}>Ready to Join<br/><br/></span>
+                            </Typography> 
+                        </Grid>
+            <Grid item sm={12}  >
+            <Button style={{backgroundColor:"Gray", borderRadius:"5rem"}}> Join Now </Button>
+            <Button style={{backgroundColor:"Gray", borderRadius:"5rem"}}> Present </Button>
+            </Grid>
+            </Grid>
+        </Grid>
+        </Container>
