@@ -130,6 +130,7 @@ const Room = (props) => {
 
     return (
         <>
+        <Navbar />
           <Grid container  spacing={1} >
                   <Grid item sm={12} md={9} container spacing={3} alignItems="center" justify="center" alignItems="center" >
                             <StyledVideo  style={{ borderRadius:'.5rem'}} muted ref={userVideo} autoPlay playsInline />
@@ -141,7 +142,7 @@ const Room = (props) => {
                   </Grid>
     
                   <Grid item sm={12} md={3}  alignItems="right" float ="right" spacing={0}>
-                       <Containerr><Navbar /></Containerr>
+                       <Containerr></Containerr>
                   </Grid>
                   
           </Grid>
