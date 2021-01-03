@@ -142,7 +142,7 @@ const Room = (props) => {
                   </Grid>
     
                   <Grid item sm={12} md={3}  alignItems="right" float ="right" spacing={0}>
-                       <Containerr></Containerr>
+                      
                   </Grid>
                   
           </Grid>
