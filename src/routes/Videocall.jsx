@@ -5,6 +5,10 @@ import {Grid,Typography,Button,IconButton,Snackbar} from '@material-ui/core';
 import CastConnectedIcon from '@material-ui/icons/CastConnected';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 import MuiAlert from '@material-ui/lab/Alert';
+import VideocamOffIcon from '@material-ui/icons/VideocamOff';
+import VideocamIcon from '@material-ui/icons/Videocam';
+import MicOffIcon from '@material-ui/icons/MicOff';
+import MicIcon from '@material-ui/icons/Mic';
 
 const videoConstraints = {
     height: window.innerHeight / 2,
@@ -15,17 +19,38 @@ const Videocall = (props) => {
     const roomID = props.match.params.roomID;
     const userVideo = useRef();
     const [open, setOpen] = React.useState(false);
-    useEffect(() => {
-        navigator.mediaDevices.getUserMedia({ video: videoConstraints, audio: true }).then(stream => {
-            userVideo.current.srcObject = stream;
+    const [show,setShow]=React.useState(false);
+    const [video,setVideo]=React.useState(true);
+    const [mic,setMic]=React.useState(true);
+    function capture(){
+        setVideo(prev=>{
+        return !prev
         })
-    }, []);
+    }
+    function audio(){
+        setMic(prev=>{
+        return !prev
+        })
+    }
+    useEffect(() => {
+        if(video)
+            navigator.mediaDevices.getUserMedia({ video: videoConstraints, audio: mic }).then(stream => {
+                userVideo.current.srcObject = stream;
+            })
+        else
+            navigator.mediaDevices.getUserMedia({ video: false, audio: mic }).then(stream => {
+                userVideo.current.srcObject = stream;
+            })
+        console.log('in');
+    }, [mic,video]);
     function handelClick() {
         props.history.push(`/room/${roomID}`);
     }
     function display()
     {
-        console.log('hi')
+        setShow(prev=>{
+            return true;
+        })
     }
     function handlecopy(){
         var msg=`Hello let's do Video Call with संभव.\nVisit the link:\nhttps://servercaller.herokuapp.com/Caller/ \nMeeting Code:\n${roomID}`
@@ -47,20 +72,58 @@ const Videocall = (props) => {
       <>
         <Snackbar open={open} autoHideDuration={2000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
             <Alert onClose={handleClose} severity="success">
-            Copied successfully
+                Copied successfully
             </Alert>
         </Snackbar>
         <BhaluBar/>
         <Grid container justify="center" alignItems="center" spacing={0}>
             <Grid item xs={12} sm={8}>
                 <Grid container direction="column" justify="center" alignItems="center" spacing={0}>
-                    <Grid item xs={6} style={{ minHeight: '6rem' }}>
+                    <Grid item xs={3} style={{ minHeight: '6rem' }}>
                     </Grid>
+                    <div onMouseEnter={display} onMouseLeave={display}>
                     <Grid item xs={6}>
-                        <div>
-                            <video style={{maxHeight:"100%",maxWidth:'98%',borderRadius:'.5rem'}} muted ref={userVideo} autoPlay playsInline onEnter={display}/>
+                        <div style={{ minHeight: '16rem' }}>
+                            {
+                                video?
+                                <video style={{maxHeight:"100%",maxWidth:'98%',borderRadius:'.5rem'}} muted ref={userVideo} autoPlay playsInline />
+                                :
+                                <>
+                                    <video style={{maxHeight:"0%",maxWidth:'0%',borderRadius:'.5rem'}} muted ref={userVideo} autoPlay playsInline />
+                                    <img alt="avatar" src={`http://tinygraphs.com/labs/isogrids/hexa/${roomID}?theme=bythepool&numcolors=4&size=220&fmt=svg`}/>
+                                </>
+                            }                            
                         </div>
                     </Grid>
+                    <Grid item xs={3}>
+                        {
+                            show?
+                            <div style={{paddingLeft:'8rem'}}>
+                                 <Grid container spacing={3}>
+                                    <Grid item xs={6}>
+                                        <IconButton style={{backgroundColor:"red", color:"white"}} onClick={audio}>
+                                        {
+                                            mic?
+                                            <MicIcon/>:
+                                            <MicOffIcon/>
+                                        }
+                                        </IconButton>
+                                    </Grid>
+                                    <Grid item xs={6}>
+                                        <IconButton style={{backgroundColor:"red",color:"white"}} onClick={capture}>
+                                        {
+                                            video?
+                                            <VideocamIcon/>:
+                                            <VideocamOffIcon/>
+                                        }
+                                        </IconButton>                                       
+                                    </Grid>
+                                </Grid>                                
+                            </div>:
+                            <></>
+                        }
+                    </Grid>
+                    </div>
                 </Grid>
             </Grid>
             <Grid item xs={12} sm={3}>

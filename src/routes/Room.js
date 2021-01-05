@@ -6,7 +6,6 @@ import {Grid,Container} from '@material-ui/core';
 import BhaluBar from '../Components/Navbar';
 import Footer from "../Components/Footer";
 import 'react-chat-widget/lib/styles.css';
-
 const footercss = styled.div`
 
 marginTop :0px;
@@ -43,7 +42,9 @@ const Room = (props) => {
     const userVideo = useRef();
     const peersRef = useRef([]);
     const roomID = props.match.params.roomID;
-
+    function endCall(){
+        props.history.push(`/feedback/${roomID}`);
+    }
     useEffect(() => {
         socketRef.current = io.connect("/");
         navigator.mediaDevices.getUserMedia({ video: videoConstraints, audio: true }).then(stream => {
@@ -78,7 +79,6 @@ const Room = (props) => {
             });
         })
     }, [roomID]);
-
     function createPeer(userToSignal, callerID, stream) {
         const peer = new Peer({
             initiator: true,
@@ -144,7 +144,7 @@ const Room = (props) => {
                 })}
             </Grid>
          <footercss> 
-            <Footer addnewmsg={addnewmsg} r_msg={r_msg}/>  
+            <Footer endCall={endCall} addnewmsg={addnewmsg} r_msg={r_msg} />  
         </footercss>
         </Container>
         </>
