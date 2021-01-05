@@ -1,6 +1,6 @@
 import React from "react";
 import { v1 as uuid } from "uuid";
-import {Grid,Container,TextField,Typography,Paper,Button} from '@material-ui/core';
+import {Grid,Container,TextField,Typography,Button} from '@material-ui/core';
 import VideoCallIcon from '@material-ui/icons/VideoCall';
 import BhaluBar from '../Components/Navbar';
 
@@ -62,7 +62,7 @@ const CreateRoom = (props) => {
                         </Grid>
                         <Grid item sm={2}>
                             {
-                                code==''?
+                                code===''?
                                 <></>:
                                 <Button color="primary" onClick={handleClick}>Join</Button>
                             }
@@ -77,7 +77,7 @@ const CreateRoom = (props) => {
                 <Grid item sm={12} md={7}>
                     <Grid item xs={12}>
                     <div style={{boxShadow: "0 1px 2px 0 rgba(60,64,67,0.302), 0 2px 6px 2px rgba(60,64,67,0.149)",borderRadius:".5rem"}}>
-                        <img style={{maxHeight:"100%",maxWidth:'98%',borderRadius:'.5rem',margin:'0.4rem'}}  src="https://www.gstatic.com/meet/google_meet_marketing_ongoing_meeting_grid_427cbb32d746b1d0133b898b50115e96.jpg" />
+                        <img style={{maxHeight:"100%",maxWidth:'98%',borderRadius:'.5rem',margin:'0.4rem'}}  src="https://www.gstatic.com/meet/google_meet_marketing_ongoing_meeting_grid_427cbb32d746b1d0133b898b50115e96.jpg" alt="demonstration" />
                     </div>              
                     </Grid>
                 </Grid>
