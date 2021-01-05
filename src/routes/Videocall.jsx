@@ -28,7 +28,8 @@ const Videocall = (props) => {
         console.log('hi')
     }
     function handlecopy(){
-        navigator.clipboard.writeText(roomID)
+        var msg=`Hello let's do Video Call with संभव.\nVisit the link:\nhttps://servercaller.herokuapp.com/Caller/ \nMeeting Code:\n${roomID}`
+        navigator.clipboard.writeText(msg)
         setOpen(true);
     }
     const handleClose = (event, reason) => {

@@ -42,7 +42,7 @@ const CreateRoom = (props) => {
                         </Grid>
                         <Grid item sm={12}>
                            <Typography variant="subtitle1" style={{color:"grey"}}>
-                                We re-engineered the service we built for secure business meetings, Sambhav, to make it free and available for all.
+                                We re-engineered the service we built for secure business meetings, संभव, to make it free and available for all.
                                 <br/><br/>
                             </Typography> 
                         </Grid>
