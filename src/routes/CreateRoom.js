@@ -30,7 +30,7 @@ const CreateRoom = (props) => {
                         <Grid item sm={12}>
                         <Typography variant="h4" component="h2" gutterBottom>
                         <div style={{textAlign:'center'}}>
-                            <a href="https://fontmeme.com/hindi/"><img src="https://fontmeme.com/permalink/210105/969ea6d61fc59fdf9fa681c5f4f56a23.png" alt="hindi" border="0"/></a>
+                            <a href="https://servercaller.herokuapp.com/Caller/"><img src="https://fontmeme.com/permalink/210105/969ea6d61fc59fdf9fa681c5f4f56a23.png" alt="hindi" border="0"/></a>
                         </div>
                             <br/>
                         </Typography>
@@ -42,7 +42,7 @@ const CreateRoom = (props) => {
                         </Grid>
                         <Grid item sm={12}>
                            <Typography variant="subtitle1" style={{color:"grey"}}>
-                                We re-engineered the service we built for secure business meetings, Google Meet, to make it free and available for all.
+                                We re-engineered the service we built for secure business meetings, Sambhav, to make it free and available for all.
                                 <br/><br/>
                             </Typography> 
                         </Grid>

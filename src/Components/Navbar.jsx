@@ -14,7 +14,7 @@ export default function Navbar() {
               <img style={{height:'50px', width:'50px',borderRadius:"0.5rem",marginTop:".8rem"}} src="https://s3.amazonaws.com/ionic-marketplace/video-and-text-chat-app-backend/icon.png" alt="My logo" />
             </Typography>
             <div>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://fontmeme.com/hindi/"><img src="https://fontmeme.com/permalink/210105/124cc05758940eb11cda869fcfe80ccd.png" alt="hindi" border="0"/></a>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://servercaller.herokuapp.com/Caller/"><img src="https://fontmeme.com/permalink/210105/124cc05758940eb11cda869fcfe80ccd.png" alt="hindi" border="0"/></a>
             </div>
             <div style={{paddingLeft:"1.2rem"}}>
               <DigitalClock />
