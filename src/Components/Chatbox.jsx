@@ -1,25 +1,21 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Widget, addResponseMessage, addLinkSnippet, addUserMessage } from 'react-chat-widget';
- 
+import { Widget, addResponseMessage } from 'react-chat-widget';
 import 'react-chat-widget/lib/styles.css';
- 
-// import logo from './logo.svg';
- 
 
-  const handleNewUserMessage = (newMessage) => {
-    console.log(`New message incoming! ${newMessage}`);
-  }
-  const Chatbox=()=> {
+  const Chatbox=({addnewmsg,r_msg})=> {
+    const handleNewUserMessage = (newMessage) => {
+      console.log(`New message incoming! ${newMessage}`);
+      addnewmsg(newMessage);
+    }
     useEffect(() => {
-        //addResponseMessage('Welcome to this chat!');
-      }, []);
+        addResponseMessage(r_msg);
+      }, [r_msg]);
     return (
         <>
       <div className="App">
         <Widget
           handleNewUserMessage={handleNewUserMessage}
-        //   profileAvatar={logo}
-          title="D Caller"
+          title="Caller"
           subtitle="Start Chat"
         />
       </div>

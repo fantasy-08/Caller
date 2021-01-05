@@ -4,13 +4,7 @@ import Peer from "simple-peer";
 import styled from "styled-components";
 import {Grid,Container,TextField,Typography,Paper,Button} from '@material-ui/core';
 import BhaluBar from '../Components/Navbar';
-import IconButton from '@material-ui/core/IconButton';
-import PhotoCamera from '@material-ui/icons/PhotoCamera';
-import MicOffIcon from '@material-ui/icons/MicOff';
-import MicIcon from '@material-ui/icons/Mic';
-import { Player, ControlBar, VolumeMenuButton } from 'video-react';
 import Footer from "../Components/Footer";
-import Navbar from "../Components/Smallnavbar";
 import 'react-chat-widget/lib/styles.css';
 
 const footercss = styled.div`
@@ -22,20 +16,6 @@ marginTop :0px;
 
 `;
 
-const Containerr = styled.div`
-
-    marginTop :0px;
-    position:Sticky;
-    top:0;
-    zIndex:999; 
-`;
-
-const StyledVideo = styled.video`
-    height: 350px;
-    width: 400px;
-    margin: 10px;
-`;
-
 const Video = (props) => {
     const ref = useRef();
 
@@ -43,10 +23,10 @@ const Video = (props) => {
         props.peer.on("stream", stream => {
             ref.current.srcObject = stream;
         })
-    }, []);
+    }, [props.peer]);
 
     return (
-        <StyledVideo playsInline autoPlay ref={ref} />
+        <video  style={{maxHeight:"100%",maxWidth:'98%',borderRadius:'.5rem'}} playsInline autoPlay ref={ref} />
     );
 }
 
@@ -58,6 +38,7 @@ const videoConstraints = {
 
 const Room = (props) => {
     const [peers, setPeers] = useState([]);
+    const [r_msg,setr_msg]=useState('Welcome to Chat!');
     const socketRef = useRef();
     const userVideo = useRef();
     const peersRef = useRef([]);
@@ -96,7 +77,7 @@ const Room = (props) => {
                 item.peer.signal(payload.signal);
             });
         })
-    }, []);
+    }, [roomID]);
 
     function createPeer(userToSignal, callerID, stream) {
         const peer = new Peer({
@@ -127,39 +108,48 @@ const Room = (props) => {
 
         return peer;
     }
+        
+    function addnewmsg(msg){
+        var data={
+            roomID:roomID,
+            msg:msg
+        }
+        socketRef.current.emit('new message', data);
+    }
+
+    if(socketRef.current){
+        socketRef.current.on('new message', (data) => {
+            if(data.roomID===roomID)
+                setr_msg(data.message);
+        });
+    }
 
     return (
         <>
-        <Navbar />
-          <Grid container  spacing={1} >
-                  <Grid item sm={12} md={9} container spacing={3} alignItems="center" justify="center" alignItems="center" >
-                            <StyledVideo  style={{ borderRadius:'.5rem'}} muted ref={userVideo} autoPlay playsInline />
-                                {peers.map((peer, index) => {
-                                    return (
-                                        <Video key={index} peer={peer} />
-                                    );
-                                })}
-                  </Grid>
-    
-                  <Grid item sm={12} md={3}  alignItems="right" float ="right" spacing={0}>
-                      
-                  </Grid>
-                  
-          </Grid>
-         <footercss> <Footer/>  </footercss>
+        <BhaluBar/>
+        <br/><br/><br/>
+        <Container>
+          <Grid container >
+            <Grid item sm={12} md={4}>
+            <video style={{maxHeight:"100%",maxWidth:'98%',borderRadius:'.5rem'}} muted ref={userVideo} autoPlay playsInline />
+            </Grid>
+                {peers.map((peer, index) => {
+                    return (
+                        <Grid item sm={12} md={4} >
+                            <div>
+                                <Video key={index} peer={peer} />
+                            </div>
+                        </Grid>
+                    );
+                })}
+            </Grid>
+         <footercss> 
+            <Footer addnewmsg={addnewmsg} r_msg={r_msg}/>  
+        </footercss>
+        </Container>
         </>
       );
     }
     export default Room;
 
-     {/* 
-                        <IconButton>
-                            <PhotoCamera/>
-                        </IconButton>
-                        <IconButton>
-                            <MicIcon/>
-                        </IconButton>
-                        <IconButton>
-                            <MicOffIcon/>
-                        </IconButton> */}
   

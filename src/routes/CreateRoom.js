@@ -7,14 +7,14 @@ import BhaluBar from '../Components/Navbar';
 const CreateRoom = (props) => {
     function create() {
         const id = uuid();
-        props.history.push(`/room/${id}`);
+        props.history.push(`/joinRoom/${id}`);
     }
     const [code,setCode]=React.useState('')
     function handleChange(e){
         setCode(e.target.value);
     }
     function handleClick(){
-        props.history.push(`/room/${code}`);
+        props.history.push(`/joinRoom/${code}`);
     }
     function handleRoom(){
         create();
@@ -28,6 +28,10 @@ const CreateRoom = (props) => {
                 <Grid item sm={12} md={5}>
                     <Grid container justify="center" alignItems="center" spacing={2}>
                         <Grid item sm={12}>
+                        <Typography variant="h4" component="h2" gutterBottom>
+                            <a href="https://fontmeme.com/hindi/"><img src="https://fontmeme.com/permalink/210105/969ea6d61fc59fdf9fa681c5f4f56a23.png" alt="hindi" border="0"/></a>
+                            <br/>
+                        </Typography>
                             <Typography variant="h4" component="h2" gutterBottom>
                                 Premium video meetings.<br/>Now free for everyone.
                             </Typography>
