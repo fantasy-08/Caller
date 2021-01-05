@@ -9,6 +9,7 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route path="/Caller" exact component={CreateRoom} />
+        <Route path="/" exact component={CreateRoom} />
         <Route path="/joinRoom/:roomID" component={VideoCall}/> 
         <Route path="/room/:roomID" component={Room} />
       </Switch>

@@ -27,7 +27,7 @@ const Videocall = (props) => {
     return (
       <>
         <BhaluBar/>
-        <Grid container justify="center" alignItems="center">
+        <Grid container justify="center" alignItems="center" spacing={0}>
             <Grid item xs={12} sm={8}>
                 <Grid container direction="column" justify="center" alignItems="center" spacing={0}>
                     <Grid item xs={6} style={{ minHeight: '6rem' }}>
@@ -39,14 +39,17 @@ const Videocall = (props) => {
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid item xs={12} sm={4}>
-            <Typography variant="h4" component="h2" gutterBottom>
-                Ready to join ?
-                <br/>
-            </Typography>
-            <Button variant="contained" color="primary" size="large" startIcon={<CastConnectedIcon/>} style={{borderRadius:'1.2rem'}} onClick={handelClick}>
-                Join
-            </Button>
+            <Grid item xs={12} sm={3}>
+                <div style={{textAlign:'center'}}>
+                    <br/>
+                <Typography variant="h4" component="h2" gutterBottom>
+                    Ready to join ?
+                    <br/>
+                </Typography>
+                <Button variant="contained" color="primary" size="large" startIcon={<CastConnectedIcon/>} style={{borderRadius:'1.2rem'}} onClick={handelClick}>
+                    Join
+                </Button>
+                </div>
             </Grid>
         </Grid>
       </>
