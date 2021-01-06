@@ -90,7 +90,7 @@ const Videocall = (props) => {
                                 :
                                 <>
                                     <video style={{maxHeight:"0%",maxWidth:'0%',borderRadius:'.5rem'}} muted ref={userVideo} autoPlay playsInline />
-                                    <img alt="avatar" src={`http://tinygraphs.com/labs/isogrids/hexa/${roomID}?theme=bythepool&numcolors=4&size=220&fmt=svg`}/>
+                                    <img alt="avatar" src={`https://avataaars.io/?avatarStyle=Circle&topType=LongHairBun&accessoriesType=Prescription02&hairColor=Black&facialHairType=BeardMedium&facialHairColor=BlondeGolden&clotheType=BlazerSweater&clotheColor=Blue02&eyeType=Close&eyebrowType=RaisedExcitedNatural&mouthType=Disbelief&skinColor=Tanned`}/>
                                 </>
                             }                            
                         </div>

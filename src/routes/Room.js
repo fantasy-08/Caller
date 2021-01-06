@@ -6,13 +6,13 @@ import {Grid,Container} from '@material-ui/core';
 import BhaluBar from '../Components/Navbar';
 import Footer from "../Components/Footer";
 import 'react-chat-widget/lib/styles.css';
-const footercss = styled.div`
+// import Board from '../Components/Board';
 
+const footercss = styled.div`
 marginTop :0px;
     position:Sticky;
     bottom:0;
     zIndex:999;
-
 `;
 
 const Video = (props) => {
@@ -38,13 +38,16 @@ const videoConstraints = {
 const Room = (props) => {
     const [peers, setPeers] = useState([]);
     const [r_msg,setr_msg]=useState('Welcome to Chat!');
+    const [otherUser,setOtherUser]=useState();
     const socketRef = useRef();
     const userVideo = useRef();
     const peersRef = useRef([]);
     const roomID = props.match.params.roomID;
     function endCall(){
+        // socketRef.current.emit('disconnect1',otherUser);
         props.history.push(`/feedback/${roomID}`);
     }
+    const [audio,setAudio]=useState(true);
     useEffect(() => {
         socketRef.current = io.connect("/");
         navigator.mediaDevices.getUserMedia({ video: videoConstraints, audio: true }).then(stream => {
@@ -52,6 +55,8 @@ const Room = (props) => {
             socketRef.current.emit("join room", roomID);
             socketRef.current.on("all users", users => {
                 const peers = [];
+                setPeers([]);
+                console.log('someone went to hell')
                 users.forEach(userID => {
                     const peer = createPeer(userID, socketRef.current.id, stream);
                     peersRef.current.push({
@@ -62,7 +67,9 @@ const Room = (props) => {
                 })
                 setPeers(peers);
             })
-
+            socketRef.current.on("yourID",id=>{
+                setOtherUser(id);
+            })
             socketRef.current.on("user joined", payload => {
                 const peer = addPeer(payload.signal, payload.callerID, stream);
                 peersRef.current.push({
@@ -79,6 +86,10 @@ const Room = (props) => {
             });
         })
     }, [roomID]);
+
+    useEffect(()=>{
+    },[audio])
+
     function createPeer(userToSignal, callerID, stream) {
         const peer = new Peer({
             initiator: true,
@@ -128,6 +139,7 @@ const Room = (props) => {
         <>
         <BhaluBar/>
         <br/><br/><br/>
+        {/* <Board/> */}
         <Container>
           <Grid container >
             <Grid item sm={12} md={4}>
@@ -144,7 +156,7 @@ const Room = (props) => {
                 })}
             </Grid>
          <footercss> 
-            <Footer endCall={endCall} addnewmsg={addnewmsg} r_msg={r_msg} />  
+            <Footer endCall={endCall} addnewmsg={addnewmsg} r_msg={r_msg} roomID={roomID} setAudio={setAudio}/>  
         </footercss>
         </Container>
         </>

@@ -3,10 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import Videocall from "./routes/Videocall";
+
 ReactDOM.render(
   <React.StrictMode>
-  {/* <Videocall/> */}
     <App />
   </React.StrictMode>,
   document.getElementById('root')
