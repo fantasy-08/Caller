@@ -13,7 +13,7 @@ Video Calling Application
 
 ### Tech
 
-Dillinger uses a number of open source projects to work properly:
+संभव uses a number of open source projects to work properly:
 
 * [Node.JS]  evented I/O for the backend
 * Material_UI
