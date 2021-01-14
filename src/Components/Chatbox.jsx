@@ -11,16 +11,17 @@ import 'react-chat-widget/lib/styles.css';
         addResponseMessage(r_msg);
       }, [r_msg]);
     return (
-        <>
-      <div className="App">
-        <Widget
-          handleNewUserMessage={handleNewUserMessage}
-          title="Caller"
-          subtitle="Start Chat"
-        />
-      </div>
-      </>
-    );
+		<>
+			<div className="App">
+				<Widget
+					handleNewUserMessage={handleNewUserMessage}
+					title="Caller"
+					subtitle="Start Chat"
+					showCloseButton
+				/>
+			</div>
+		</>
+	);
   } ;
 
  

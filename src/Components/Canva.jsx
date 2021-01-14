@@ -1,108 +1,125 @@
-import React from 'react';
-import io from 'socket.io-client';
+import React from "react";
+import io from "socket.io-client";
 
 // import './style.css';
 
 class Board extends React.Component {
+	timeout;
+	socket = io.connect("/");
 
-    timeout;
-    socket = io.connect("/");
+	ctx;
+	isDrawing = false;
 
-    ctx;
-    isDrawing = false;
+	constructor(props) {
+		super(props);
 
-    constructor(props) {
-        super(props);
+		this.socket.on("canvas-data", function (data) {
+			var root = this;
+			var interval = setInterval(function () {
+				if (root.isDrawing) return;
+				root.isDrawing = true;
+				clearInterval(interval);
+				var image = new Image();
+				var canvas = document.querySelector("#board");
+				var ctx = canvas.getContext("2d");
+				image.onload = function () {
+					ctx.drawImage(image, 0, 0);
 
-        this.socket.on("canvas-data", function(data){
+					root.isDrawing = false;
+				};
+				image.src = data;
+			}, 200);
+		});
+	}
 
-            var root = this;
-            var interval = setInterval(function(){
-                if(root.isDrawing) return;
-                root.isDrawing = true;
-                clearInterval(interval);
-                var image = new Image();
-                var canvas = document.querySelector('#board');
-                var ctx = canvas.getContext('2d');
-                image.onload = function() {
-                    ctx.drawImage(image, 0, 0);
+	componentDidMount() {
+		this.drawOnCanvas();
+	}
 
-                    root.isDrawing = false;
-                };
-                image.src = data;
-            }, 200)
-        })
-    }
+	componentWillReceiveProps(newProps) {
+		this.ctx.strokeStyle = newProps.color;
+		this.ctx.lineWidth = newProps.size;
+	}
 
-    componentDidMount(){
-        this.drawOnCanvas();
-    }
+	drawOnCanvas() {
+		var canvas = document.querySelector("#board");
+		this.ctx = canvas.getContext("2d");
+		var ctx = this.ctx;
 
-    componentWillReceiveProps(newProps) {
-        this.ctx.strokeStyle = newProps.color;
-        this.ctx.lineWidth = newProps.size;
-    }
+		var sketch = document.querySelector("#sketch");
+		var sketch_style = getComputedStyle(sketch);
+		canvas.width = parseInt(sketch_style.getPropertyValue("width"));
+		canvas.height = parseInt(sketch_style.getPropertyValue("height"));
 
-    drawOnCanvas() {
-        var canvas = document.querySelector('#board');
-        this.ctx = canvas.getContext('2d');
-        var ctx = this.ctx;
+		var mouse = { x: 0, y: 0 };
+		var last_mouse = { x: 0, y: 0 };
 
-        var sketch = document.querySelector('#sketch');
-        var sketch_style = getComputedStyle(sketch);
-        canvas.width = parseInt(sketch_style.getPropertyValue('width'));
-        canvas.height = parseInt(sketch_style.getPropertyValue('height'));
+		/* Mouse Capturing Work */
+		canvas.addEventListener(
+			"mousemove",
+			function (e) {
+				last_mouse.x = mouse.x;
+				last_mouse.y = mouse.y;
 
-        var mouse = {x: 0, y: 0};
-        var last_mouse = {x: 0, y: 0};
+				mouse.x = e.pageX - this.offsetLeft;
+				mouse.y = e.pageY - this.offsetTop;
+			},
+			false
+		);
 
-        /* Mouse Capturing Work */
-        canvas.addEventListener('mousemove', function(e) {
-            last_mouse.x = mouse.x;
-            last_mouse.y = mouse.y;
+		/* Drawing on Paint App */
+		ctx.lineWidth = this.props.size;
+		ctx.lineJoin = "round";
+		ctx.lineCap = "round";
+		ctx.strokeStyle = this.props.color;
 
-            mouse.x = e.pageX - this.offsetLeft;
-            mouse.y = e.pageY - this.offsetTop;
-        }, false);
+		canvas.addEventListener(
+			"mousedown",
+			function (e) {
+				canvas.addEventListener("mousemove", onPaint, false);
+			},
+			false
+		);
 
+		canvas.addEventListener(
+			"mouseup",
+			function () {
+				canvas.removeEventListener("mousemove", onPaint, false);
+			},
+			false
+		);
 
-        /* Drawing on Paint App */
-        ctx.lineWidth = this.props.size;
-        ctx.lineJoin = 'round';
-        ctx.lineCap = 'round';
-        ctx.strokeStyle = this.props.color;
+		var root = this;
+		var onPaint = function () {
+			ctx.beginPath();
+			ctx.moveTo(last_mouse.x, last_mouse.y);
+			ctx.lineTo(mouse.x, mouse.y);
+			ctx.closePath();
+			ctx.stroke();
 
-        canvas.addEventListener('mousedown', function(e) {
-            canvas.addEventListener('mousemove', onPaint, false);
-        }, false);
+			if (root.timeout !== undefined) clearTimeout(root.timeout);
+			root.timeout = setTimeout(function () {
+				var base64ImageData = canvas.toDataURL("image/png");
+				root.socket.emit("canvas-data", base64ImageData);
+			}, 1000);
+		};
+	}
 
-        canvas.addEventListener('mouseup', function() {
-            canvas.removeEventListener('mousemove', onPaint, false);
-        }, false);
-
-        var root = this;
-        var onPaint = function() {
-            ctx.beginPath();
-            ctx.moveTo(last_mouse.x, last_mouse.y);
-            ctx.lineTo(mouse.x, mouse.y);
-            ctx.closePath();
-            ctx.stroke();
-
-            if(root.timeout !== undefined) clearTimeout(root.timeout);
-            root.timeout = setTimeout(function(){
-                var base64ImageData = canvas.toDataURL("image/png");
-                root.socket.emit("canvas-data", base64ImageData);
-            }, 1000)
-        };
-    }
-
-    render() {
-        return (
-            <div style={{width:'100%',height:'100%'}} class="sketch" id="sketch">
-                <canvas style={{width:'100%',height:'100%'}} className="board" id="board"></canvas>
-            </div>
-        )
-    }
+	render() {
+		return (
+			<div
+				style={{ width: "100%", height: "100%" }}
+				class="sketch"
+				id="sketch"
+			>
+				<canvas
+					style={{ width: "100%", height: "100%" }}
+					className="board"
+					id="board"
+				></canvas>
+			</div>
+		);
+	}
 }
 
-export default Board
+export default Board;
