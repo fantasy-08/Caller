@@ -1,0 +1,53 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:8000",
+  "dependencies": {
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "core-js": "^3.8.1",
+    "react": "^16.14.0",
+    "react-chat-widget": "^3.0.5",
+    "react-chat-window": "^1.2.1",
+    "react-dom": "^16.14.0",
+    "react-flip-move": "^3.0.4",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.1",
+    "simple-peer": "9.6.2",
+    "socket.io-client": "^2.3.1",
+    "styled-components": "^5.2.1",
+    "uuid": "^7.0.3",
+    "video-react": "^0.14.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  },
+  "scripts": {
+    "start:production": "npm install && npm run build && npm run start:prod",
+    "start:prod": "cross-env NODE_ENV=production node server",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
