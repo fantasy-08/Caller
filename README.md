@@ -1,7 +1,7 @@
 ![संभव](https://fontmeme.com/permalink/210105/969ea6d61fc59fdf9fa681c5f4f56a23.png)
 
 
-## हम है तो अपनों से जुरना संभव है
+## हम है तो अपनों से जुड़ना संभव है
 
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://murmuring-mesa-21077.herokuapp.com/)
