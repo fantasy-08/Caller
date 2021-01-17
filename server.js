@@ -60,4 +60,4 @@ io.on("connection", (socket) => {
 	});
 });
 app.use('/Caller', express.static('./build'));
-server.listen(8000, () => console.log("server is running on port 8000"));
+server.listen(process.env.PORT, () => console.log("server is running on port 8000"));
