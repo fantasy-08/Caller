@@ -127,7 +127,7 @@ const Room = (props) => {
 					setPeers(peers);
 				});
 			});
-	};
+	}
 
 	function createPeer(userToSignal, callerID, stream) {
 		const peer = new Peer({
