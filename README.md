@@ -13,6 +13,7 @@ Video Calling Application
 
   - Whiteboard
   - Chat
+  - Login Page Added to integrate with chat
 
 ### Tech
 
@@ -52,6 +53,7 @@ FORK the repository
 ### Todos
 
  - AI Face Recognition
+ - Chat integration with Login (email)
 
 License
 ----
