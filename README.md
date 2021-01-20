@@ -1,68 +1,67 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![संभव](https://fontmeme.com/permalink/210105/969ea6d61fc59fdf9fa681c5f4f56a23.png)
 
-## Available Scripts
 
-In the project directory, you can run:
+## हम है तो अपनों से जुड़ना संभव है
 
-### `yarn start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://murmuring-mesa-21077.herokuapp.com/)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+![screenshot](https://i.ibb.co/SNPMXh1/Screenshot-2021-01-06-200620.jpg)
+Video Calling Application
 
-### `yarn test`
+# New Features!
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  - Whiteboard
+  - Chat
 
-### `yarn build`
+### Tech
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+संभव uses a number of open source projects to work properly:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+* [Node.JS]  evented I/O for the backend
+* Material_UI
+* Socket.io
+* PeerJS
+* ReactJS
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+And of course संभव itself is open source with a [Repository] on GitHub.
 
-### `yarn eject`
+### Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+संभव  requires [Node.js](https://nodejs.org/) v4+ to run.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Install the dependencies and devDependencies and start the server.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```sh
+$ cd Caller
+$ npm install -d
+$ npm start
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+For production environments...
 
-## Learn More
+```sh
+create an .env file
+```
+### Development
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Want to contribute? Great!
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+FORK the repository 
 
-### Code Splitting
+### Todos
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+ - AI Face Recognition
 
-### Analyzing the Bundle Size
+License
+----
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+MIT
 
-### Making a Progressive Web App
+**Free Software, Hell Yeah!**
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+   [node.js]: <http://nodejs.org>
+   [express]: <http://expressjs.com>
+   [Repository]:<https://github.com/fantasy-08/CPLOVE>
