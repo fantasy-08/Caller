@@ -3,8 +3,9 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import DigitalClock from "./DigitalClock";
+import Button from "@material-ui/core/Button";
 
-export default function Navbar() {
+export default function Navbar({ handleLogout }) {
 	return (
 		<div>
 			<AppBar
@@ -36,6 +37,11 @@ export default function Navbar() {
 					</div>
 					<div style={{ paddingLeft: "1.2rem" }}>
 						<DigitalClock />
+					</div>
+					<div style={{ paddingLeft: "6rem" }}>
+						<Button color="inherit" onClick={handleLogout}>
+							Logout
+						</Button>
 					</div>
 				</Toolbar>
 			</AppBar>
